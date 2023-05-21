@@ -1,67 +1,24 @@
 const mongoose = require('mongoose')
 
-const dat = mongoose.Schema({
+const user = mongoose.Schema({
+    name:{
+        type:String,
+        required:true,
 
-
-       age:{
-              type:String
-              
-       },
-       sex:{
-              type:String
-              
-       },
-       cp:{
-              type:String
-              
-       },
-       trestbps:{
-              type:String
-              
-       },
-       chol:{
-              type:String
-              
-       },
-       fbs:{
-              type:String
-              
-       },
-       restecg:{
-              type:String
-              
-       },
-       thalach:{
-              type:String
-              
-       },
-       exang:{
-              type:String
-              
-       },
-       oldpeak:{
-              type:String
-              
-       },
-       slope:{
-              type:String
-              
-       },
-       ca:{
-              type:String
-              
-       },
-       thal:{
-              type:String
-              
-       },
-       result:{
-              type:String
-              
-       },
-
-  
+    },
+    email:{
+        type:String,
+        required:true
+    },
+    password:{
+        type:String,
+        required:true
+    },
+    cpassword:{
+        type:String,
+        required:true
+    }
 })
 
-const Model = mongoose.model('hrt',dat)
+const Model = mongoose.model('user',user)
 module.exports = Model;

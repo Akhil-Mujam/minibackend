@@ -1,5 +1,6 @@
 const express= require('express')
 const app = express();
+const hmodel = require('./Database/Heart')
 const model= require('./Database/Model')
 const diamodel = require('./Database/Dia')
 const jwt = require('jsonwebtoken')
@@ -101,7 +102,7 @@ app.post('/register',async (req,res) =>{
       
         const {age,sex,cp,trestbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal,result} = req.body
 
-        const data   = new  model({
+        const data   = new  hmodel({
           age:age,
           sex:sex,
           cp:cp,
