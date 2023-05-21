@@ -1,21 +1,23 @@
 const express= require('express')
-const app = express();
+const app = express.Router();
 const hmodel = require('./Database/Heart')
 const model= require('./Database/Model')
 const diamodel = require('./Database/Dia')
 const jwt = require('jsonwebtoken')
-app.post('/',(req,res)=>{
-    console.log("hello world")
-})
-
 
 const cors = require('cors');
 app.use(cors({
     origin: '*'
 }));
 
+
 app.use(express.json())
-//register
+
+
+app.get('/',(req,res)=>{
+    console.log("hello world")
+})
+
 
 app.post('/register',async (req,res) =>{
    
@@ -32,7 +34,7 @@ app.post('/register',async (req,res) =>{
     {
          return res.json({msg:'password do not matches'})
     }
-  //object creation
+
     let data = new model({
      name : name,
      email:email,
@@ -51,8 +53,8 @@ app.post('/register',async (req,res) =>{
     
   
   })
+
   
-  //login
   app.post('/login',async(req,res)=>{
   
         const {email,password} = req.body;
