@@ -102,9 +102,10 @@ app.post('/register',async (req,res) =>{
   
   app.post('/heartdata',async(req,res)=>{
       
-        const {age,sex,cp,trestbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal,result} = req.body
+        const {age,sex,cp,trestbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal,result,userid} = req.body
 
         const data   = new  hmodel({
+          userid:userid,
           age:age,
           sex:sex,
           cp:cp,
@@ -129,9 +130,10 @@ app.post('/register',async (req,res) =>{
 
   app.post('/diabetisdata',async(req,res)=>{
  
-     const {Preg,glu,bp,skt,ins,bmi,dpf,age,result} = req.body;
+     const {Preg,glu,bp,skt,ins,bmi,dpf,age,result,userid} = req.body;
 
          const data = await diamodel({
+          userid:userid,
           Preg:Preg,
           glu:glu,
           bp:bp,
@@ -147,6 +149,18 @@ app.post('/register',async (req,res) =>{
 
          res.send("diabetis data is saved")
 
+  })
+
+
+  app.get('/getuserId/:token',async(req,res)=>{
+      const token = req.params.token;
+      const payload = jwt.verify(token,"Mini");
+      console.log(payload.user.id);
+      const result = await model.findOne({_id:payload.user.id}).then((r)=>
+         res.json(r)
+      ).catch((err)=>{
+        console.log(err);
+      })
   })
 
   

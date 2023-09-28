@@ -2,7 +2,9 @@ const mongoose = require('mongoose')
 
 const dat = mongoose.Schema({
 
-
+       userid:{
+             type:String
+       },
        age:{
               type:String
               

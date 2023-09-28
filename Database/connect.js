@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 
-mongoose.connect("mongodb+srv://mini:UNtxxIFDFaZYvHw8@cluster0.ligpuzz.mongodb.net/?retryWrites=true&w=majority").then(
+mongoose.connect("mongodb+srv://miniproject:odwOGDJvaFIK7wwX@cluster0.lu1eimu.mongodb.net/?retryWrites=true&w=majority").then(
     data => console.log("database connected..")
 )
 .catch(   
     err => console.log("error")
 )
+
+

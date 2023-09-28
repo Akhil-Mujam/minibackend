@@ -1,7 +1,9 @@
 const mongoose = require('mongoose')
 // input_d = (Preg,glu,bp,skt,ins,bmi,dpf,age)
 const diabetis = mongoose.Schema({
-
+      userid:{
+        type:String
+      },
       Preg:{
         type:String
       },
@@ -24,6 +26,9 @@ const diabetis = mongoose.Schema({
           type:String
       },
       age:{
+        type:String
+      },
+      result:{
         type:String
       }
 
