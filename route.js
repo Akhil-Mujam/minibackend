@@ -58,7 +58,8 @@ app.post('/register',async (req,res) =>{
   app.post('/login',async(req,res)=>{
   
         const {email,password} = req.body;
-  
+      //  console.log(email)
+      //  console.log(password)
         if(!(email && password))
         {
           return res.send("input is required");
@@ -163,5 +164,21 @@ app.post('/register',async (req,res) =>{
       })
   })
 
+
+  app.get('/getDetails/:token',async(req,res)=>{
+   
+    const token = req.params.token;
+    console.log(token)
+    const payload = jwt.verify(token,"Mini");
+      console.log(payload.user.id);
+       await model.findOne({_id:payload.user.id}).then((r)=>
+           hmodel.find({userid:r._id}).then((data) =>{
+            res.json(data)
+          })
+      ).catch((err)=>{
+        console.log(err);
+      })
+  })
+  
   
 module.exports = app
